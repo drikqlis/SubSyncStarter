@@ -6,6 +6,9 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.sln
+*.pyproj
+SubSyncStarter
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
