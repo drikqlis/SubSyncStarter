@@ -3,6 +3,7 @@ import sys
 import logging
 import subprocess
 
+logging.root.handlers = []
 logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.DEBUG, handlers=[logging.FileHandler("/home/mateusz/subsync/SubSyncStarter.log"),logging.StreamHandler()])
 log = logging.getLogger()
 
