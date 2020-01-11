@@ -29,6 +29,14 @@ p_status = p.wait()
 print("Command output : ", output)
 print("Command exit status/return code : ", p_status)
 
-log.debug('Output: %s' % output)
+output = output.replace("\r","\n")
+output = output.split("\n")
+for outputs in output:
+    log.debug('Output: %s' % outputs)
 log.debug('Error: %s' % err)
 log.debug('Exit code: %s' % p_status)
+
+if "[+] done" in output[-1]:
+    log.info('Conversion succesful')
+else:
+    log.warning('Conversion failed')
