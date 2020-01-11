@@ -24,8 +24,8 @@ p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
 ## Wait for date to terminate. Get return returncode ##
 p_status = p.wait()
 
-print "Command output : ", output
-print "Command exit status/return code : ", p_status
+print("Command output : ", output)
+print("Command exit status/return code : ", p_status)
 
 logging.debug('Output: %s' % output)
 logging.debug('Error: %s' % err)
