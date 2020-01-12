@@ -30,7 +30,7 @@ try:
 
     output = str(output)
     output_list = output.splitlines()
-    for outputs in output:
+    for outputs in output_list:
         log.debug('Output: %s' % outputs)
     log.debug('Error: %s' % err)
     log.debug('Exit code: %s' % p_status)
