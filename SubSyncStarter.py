@@ -21,20 +21,24 @@ log.debug('Subtitles code (3): %s' % sub_code3)
 
 log.info('Starting conversion of subtitles file: %s' % sub_file)
 log.debug('Running command: %s' % command)
-p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
-(output, err) = p.communicate()
-## Wait for date to terminate. Get return returncode ##
-p_status = p.wait()
 
-output = str(output)
-output = output.replace("\r","\n")
-output_list = output.split("\n")
-for outputs in output:
-    log.debug('Output: %s' % outputs)
-log.debug('Error: %s' % err)
-log.debug('Exit code: %s' % p_status)
+try:
+    p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+    (output, err) = p.communicate()
+    ## Wait for date to terminate. Get return returncode ##
+    p_status = p.wait()
 
-if "[+] done" in output[-1]:
-    log.info('Conversion succesful')
-else:
-    log.warning('Conversion failed')
+    output = str(output)
+    output = output.replace("\r","\n")
+    output_list = output.split("\n")
+    for outputs in output:
+        log.debug('Output: %s' % outputs)
+    log.debug('Error: %s' % err)
+    log.debug('Exit code: %s' % p_status)
+
+    if "[+] done" in output[-1]:
+        log.info('Conversion succesfull')
+    else:
+        log.warning('Conversion failed')
+except:
+    log.exception('Conversion failed')
