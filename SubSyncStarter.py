@@ -31,7 +31,7 @@ try:
     output = str(output)
     output = output.replace("\r","\n")
     output_list = output.split("\n")
-    for output_list in output:
+    for outputs in output_list:
         log.debug('Output: %s' % outputs)
     log.debug('Error: %s' % err)
     log.debug('Exit code: %s' % p_status)
