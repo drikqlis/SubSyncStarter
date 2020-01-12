@@ -29,8 +29,8 @@ try:
     p_status = p.wait()
 
     output = str(output)
-    output = output.replace("\r","\n")
-    output_list = output.split("\n")
+    output = output.replace('\r','\n')
+    output_list = output.split('\n')
     for outputs in output:
         log.debug('Output: %s' % outputs)
     log.debug('Error: %s' % err)
