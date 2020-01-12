@@ -4,7 +4,7 @@ import logging
 import subprocess
 
 logging.root.handlers = []
-logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.DEBUG, handlers=[logging.FileHandler("/home/mateusz/subsync/SubSyncStarter.log"),logging.StreamHandler()])
+logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.DEBUG, handlers=[logging.FileHandler("/home/mateusz/subsync/SubSyncStarter.log", encoding="utf-8"),logging.StreamHandler()])
 log = logging.getLogger()
 
 reference_file = sys.argv[1]
@@ -28,7 +28,7 @@ p_status = p.wait()
 
 output = str(output)
 output = output.replace("\r","\n")
-output = output.split("\n")
+output_list = output.split("\n")
 for outputs in output:
     log.debug('Output: %s' % outputs)
 log.debug('Error: %s' % err)
