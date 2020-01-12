@@ -35,7 +35,7 @@ try:
     log.debug('Error: %s' % err)
     log.debug('Exit code: %s' % p_status)
 
-    if "[+] done" in output[-1]:
+    if "[+] done" in output_list[-1]:
         log.info('Conversion succesfull')
     else:
         log.warning('Conversion failed')
