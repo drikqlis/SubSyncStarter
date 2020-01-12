@@ -26,9 +26,7 @@ p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
 ## Wait for date to terminate. Get return returncode ##
 p_status = p.wait()
 
-print("Command output : ", output)
-print("Command exit status/return code : ", p_status)
-
+output = str(output)
 output = output.replace("\r","\n")
 output = output.split("\n")
 for outputs in output:
