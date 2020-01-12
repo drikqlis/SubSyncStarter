@@ -28,9 +28,8 @@ try:
     ## Wait for date to terminate. Get return returncode ##
     p_status = p.wait()
 
-    output = str(output)
-    output = output.replace('\r','\n')
-    output_list = output.split('\n')
+    output = output.decode('utf-8')
+    output_list = output.splitlines()
     for outputs in output_list:
         log.debug('Output: %s' % outputs)
     log.debug('Error: %s' % err)
