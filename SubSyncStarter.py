@@ -34,10 +34,11 @@ try:
         log.debug('Output: %s' % outputs)
     log.debug('Error: %s' % err)
     log.debug('Exit code: %s' % p_status)
-    log.debug('test %s' % output_list[-1])
     if "[+] done" in output_list[-1]:
         log.info('Conversion succesfull')
     else:
+        os.remove(sub_file)
         log.warning('Conversion failed')
 except:
+    os.remove(sub_file)
     log.exception('Conversion failed')
