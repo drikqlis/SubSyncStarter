@@ -12,7 +12,7 @@ sub_file = sys.argv[2]
 sub_code2 = '.%s.srt' % sys.argv[3]
 sub_code3 = '.%s.srt' % sys.argv[4]
 sub_new = sub_file.replace(sub_code3, sub_code2)
-command = "/snap/bin/subsync --cli --verbose 1 --logfile '/home/mateusz/subsync/subsync.log' sync --sub '%s' --ref '%s' --out '%s' --effort 0 --overwrite" % (sub_file, reference_file, sub_new)
+command = "/snap/bin/subsync --cli --verbose 1 --logfile '/home/mateusz/subsync/subsync.log' sync --sub '%s' --ref '%s' --out '%s' --effort 1 --overwrite" % (sub_file, reference_file, sub_new)
 
 log.debug('Reference file: %s' % reference_file)
 log.debug('Subtitles file: %s' % sub_file)
