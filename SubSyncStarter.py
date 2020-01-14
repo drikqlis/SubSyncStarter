@@ -36,9 +36,12 @@ try:
     log.debug('Exit code: %s' % p_status)
     if "[+] done" in output_list[-1]:
         log.info('Conversion succesfull')
+        print('Conversion succesfull')
     else:
         os.remove(sub_file)
         log.warning('Conversion failed')
+        print('Conversion failed')
 except:
     os.remove(sub_file)
     log.exception('Conversion failed')
+    print('Conversion failed')
