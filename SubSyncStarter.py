@@ -3,7 +3,17 @@ import sys
 import logging
 import subprocess
 import configparser
-import filehash
+from filehash import FileHash
+
+
+def hashbad (bad_file, sub_file):
+    hasher = FileHash('sha1')
+    hash = hasher.hash_file(sub_file)
+    f_open = open(bad_file, "a+")
+    f_open.write(hash)
+    f_open.close()
+    return hash
+
 
 reference_file = sys.argv[1]
 sub_file = sys.argv[2]
@@ -26,14 +36,6 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=log
 log = logging.getLogger()
 
 command = "/snap/bin/subsync --cli --verbose " + loglevel_subsync + " --logfile '" + logfile_subsync + "' --window-size " + window_size + " sync --sub '" + sub_file + "' --ref '" + reference_file + "' --out '" + sub_file + "' --effort " + effort +" --overwrite"
-
-def hashbad (bad_file, sub_file):
-    hasher = FileHash('sha1')
-    hash = hasher.hash_file(sub_file)
-    f_open = open(bad_file, "a+")
-    f_open.write(hash)
-    f_open.close()
-    return hash
 
 log.debug('Reference file: %s' % reference_file)
 log.debug('Subtitles file: %s' % sub_file)
