@@ -60,6 +60,8 @@ try:
     log.debug('Error: %s' % err)
     log.debug('Exit code: %s' % p_status)
     if "[+] done" in output_list[-1]:
+        if os.path.isfile(bad_file):
+            os.remove(bad_file)
         log.info('Sync succesful')
         print('Sync succesful')
     else:
