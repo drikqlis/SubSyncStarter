@@ -10,7 +10,9 @@ def hashbad (bad_file, sub_file):
     hasher = FileHash('sha1')
     hash = hasher.hash_file(sub_file)
     f_open = open(bad_file, "a+")
-    f_open.write(hash)
+    f_open.write(hash + '\n')
+    bad_hashes = f_open.read().splitlines()
+    print(len(bad_hashes))
     f_open.close()
     return hash
 
