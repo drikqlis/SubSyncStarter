@@ -31,7 +31,7 @@ log.debug('Subtitles file: %s' % sub_file)
 log.debug('Subtitles code (2): %s' % sub_code2)
 log.debug('Subtitles code (3): %s' % sub_code3)
 
-log.info('Starting conversion of subtitles file: %s' % sub_file)
+log.info('Starting synchronization of subtitles file: %s' % sub_file)
 log.debug('Running command: %s' % command)
 
 try:
@@ -47,13 +47,13 @@ try:
     log.debug('Error: %s' % err)
     log.debug('Exit code: %s' % p_status)
     if "[+] done" in output_list[-1]:
-        log.info('Conversion succesfull')
-        print('Conversion succesfull')
+        log.info('Sync succesful')
+        print('Sync succesful')
     else:
         os.remove(sub_file)
-        log.warning('Conversion failed')
-        print('Conversion failed')
+        log.warning('Sync failed')
+        print('Sync failed')
 except:
     os.remove(sub_file)
-    log.exception('Conversion failed')
-    print('Conversion failed')
+    log.exception('Sync failed')
+    print('Sync failed')
