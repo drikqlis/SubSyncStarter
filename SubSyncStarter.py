@@ -11,9 +11,6 @@ def hashbad (bad_file, sub_file):
     hash = hasher.hash_file(sub_file)
     f_open = open(bad_file, "a+")
     f_open.write(hash + '\n')
-    bad_hashes = f_open.read()
-    bad_hashes_list = bad_hashes.splitlines()
-    print(len(bad_hashes_list))
     f_open.close()
     return hash
 
@@ -67,6 +64,11 @@ try:
         print('Sync succesful')
     else:
         hashbad(bad_file, sub_file)
+        f_open = open(bad_file, "r")
+        bad_hashes = f_open.read()
+        bad_hashes_list = bad_hashes.splitlines()
+        print(len(bad_hashes_list))
+        f_open.close()
         os.remove(sub_file)
         log.warning('Sync failed')
         print('Sync failed')
