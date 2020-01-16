@@ -1,10 +1,15 @@
 import os
 import sys
 import logging
+logging.root.handlers = []
+logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.DEBUG, handlers=[logging.FileHandler(logfile_starter, encoding="utf-8"),logging.StreamHandler()])
+log = logging.getLogger()
 import subprocess
 import configparser
 from filehash import FileHash
 
+
+log.debug("test")
 
 def hashbad (bad_file, sub_file):
     hasher = FileHash('sha1')
@@ -30,10 +35,6 @@ loglevel_subsync = config['SubSync']['LoggingLevel']
 logfile_subsync = config['SubSync']['Logfile']
 effort = config['SubSync']['Effort']
 window_size = config['SubSync']['WindowSize']
-
-logging.root.handlers = []
-logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.DEBUG, handlers=[logging.FileHandler(logfile_starter, encoding="utf-8"),logging.StreamHandler()])
-log = logging.getLogger()
 
 command = "/snap/bin/subsync --cli --verbose " + loglevel_subsync + " --logfile '" + logfile_subsync + "' --window-size " + window_size + " sync --sub '" + sub_file + "' --ref '" + reference_file + "' --out '" + sub_file + "' --effort " + effort +" --overwrite"
 
