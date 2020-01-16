@@ -9,3 +9,4 @@ LoggingLevel = 1
 Logfile = /home/mateusz/subsync/subsync.log
 Effort = 1
 WindowSize = 300
+MaxPointDistance = 1

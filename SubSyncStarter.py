@@ -30,8 +30,9 @@ loglevel_subsync = config['SubSync']['LoggingLevel']
 logfile_subsync = config['SubSync']['Logfile']
 effort = config['SubSync']['Effort']
 window_size = config['SubSync']['WindowSize']
+max_point_dist = config['SubSync']['MaxPointDistance']
 
-command = "/snap/bin/subsync --cli --verbose " + loglevel_subsync + " --logfile '" + logfile_subsync + "' --window-size " + window_size + " sync --sub '" + sub_file + "' --ref '" + reference_file + "' --out '" + sub_file + "' --effort " + effort +" --overwrite"
+command = "/snap/bin/subsync --cli --verbose " + loglevel_subsync + " --logfile '" + logfile_subsync + "' --window-size " + window_size + "--max-point-dist " + max_point_dist + " sync --sub '" + sub_file + "' --ref '" + reference_file + "' --out '" + sub_file + "' --effort " + effort +" --overwrite"
 
 logging.root.handlers = []
 logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.DEBUG, handlers=[logging.FileHandler(logfile_starter, encoding="utf-8"),logging.StreamHandler()])
