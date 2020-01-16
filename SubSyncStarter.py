@@ -18,7 +18,7 @@ reference_file = sys.argv[1]
 sub_file = sys.argv[2]
 sub_code2 = '.%s.srt' % sys.argv[3]
 sub_code3 = '.%s.srt' % sys.argv[4]
-bad_file = os.path.splitext(sub_file)[0] + '.bad'
+bad_file = os.path.splitext(reference_file)[0] + '.bad'
 subsyncstarter_path = os.path.dirname(sys.argv[0])
 
 config = configparser.ConfigParser()
