@@ -3,21 +3,12 @@ import sys
 import logging
 import subprocess
 import configparser
-from filehash import FileHash
-
-def hashbad (bad_file, sub_file):
-    hasher = FileHash('sha1')
-    hash = hasher.hash_file(sub_file)
-    f_open = open(bad_file, "a+")
-    f_open.write(hash + '\n')
-    f_open.close()
-    return hash
 
 
 reference_file = sys.argv[1]
 sub_file = sys.argv[2]
-sub_code2 = '.%s.srt' % sys.argv[3]
-sub_code3 = '.%s.srt' % sys.argv[4]
+sub_code2 = sys.argv[3]
+sub_code3 = sys.argv[4]
 bad_file = os.path.splitext(reference_file)[0] + '.bad'
 subsyncstarter_path = os.path.dirname(sys.argv[0])
 
@@ -49,7 +40,6 @@ log.debug('Running command: %s' % command)
 try:
     p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
     (output, err) = p.communicate()
-    ## Wait for date to terminate. Get return returncode ##
     p_status = p.wait()
 
     output = output.decode('utf-8')
@@ -64,18 +54,10 @@ try:
         log.info('Sync succesful')
         print('Sync succesful')
     else:
-        #hashbad(bad_file, sub_file)
-        #f_open = open(bad_file, "r")
-        #bad_hashes = f_open.read()
-        #bad_hashes_list = bad_hashes.splitlines()
-        #print(len(bad_hashes_list))
-        #f_open.close()
         os.remove(sub_file)
-        log.warning('Sync failed')
-        print('Sync failed')
-
+        log.warning('Sync failed - wrong subs')
+        print('Sync failed - wrong subs')
 except:
-    #hashbad(bad_file, sub_file)
     os.remove(sub_file)
-    log.exception('Sync failed')
-    print('Sync failed')
+    log.exception('Sync failed - exception')
+    print('Sync failed - exception')

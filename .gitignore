@@ -10,6 +10,7 @@
 *.pyproj
 SubSyncStarter
 *.ini
+logs/*.log
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

@@ -1,12 +1,12 @@
 [General]
 # DEBUG, INFO, WARNING, ERROR
 LoggingLevel = DEBUG
-Logfile = /home/mateusz/subsync/SubSyncStarter.log
+Logfile = /opt/SubSyncStarter/logs/SubSyncStarter.log
 
 [SubSync]
 Location = /snap/bin/subsync
 LoggingLevel = 1
-Logfile = /home/mateusz/subsync/subsync.log
+Logfile = /opt/SubSyncStarter/logs/subsync.log
 Effort = 1
 WindowSize = 300
 MaxPointDistance = 1
