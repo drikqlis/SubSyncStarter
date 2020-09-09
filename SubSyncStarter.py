@@ -93,8 +93,8 @@ try:
             except requests.exceptions.ReadTimeout: 
                 pass       
 
-        if os.path.isfile(sub_file):
-            os.remove(sub_file)
+        #if os.path.isfile(sub_file):
+        #    os.remove(sub_file)
         log.warning('Sync failed - wrong subs')
         print('Sync failed - wrong subs')
 except:
