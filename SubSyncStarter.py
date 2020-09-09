@@ -3,7 +3,7 @@ import sys
 import logging
 import subprocess
 import configparser
-
+import requests
 
 reference_file = sys.argv[1]
 sub_file = sys.argv[2]
@@ -14,13 +14,13 @@ subtitle_id = sys.argv[6]
 provider = sys.argv[7]
 series_id = sys.argv[8]
 episode_id = sys.argv[9]
-bad_file = os.path.splitext(reference_file)[0] + '.bad'
 subsyncstarter_path = os.path.dirname(sys.argv[0])
 
 config = configparser.ConfigParser()
 config.read(os.path.join(subsyncstarter_path,'config.ini'))
 loglevel_starter = config['General']['LoggingLevel']
 logfile_starter = config['General']['Logfile']
+apikey = config['General']['BazarrApiKey']
 location_subsync = config['SubSync']['Location']
 loglevel_subsync = config['SubSync']['LoggingLevel']
 logfile_subsync = config['SubSync']['Logfile']
@@ -60,12 +60,41 @@ try:
     log.debug('Error: %s' % err)
     log.debug('Exit code: %s' % p_status)
     if "[+] done" in output_list[-1]:
-        if os.path.isfile(bad_file):
-            os.remove(bad_file)
         log.info('Sync succesful')
         print('Sync succesful')
     else:
-        os.remove(sub_file)
+        if series_id = "":
+            url = "http://192.168.3.13:6767/api/blacklist_movie_subtitles_add"
+            payload = {'apikey': apikey,
+            'radarr_id': episode_id,
+            'provider': provider,
+            'subs_id': subtitle_id,
+            'language': sub_code2,
+            'forced': 'false',
+            'video_path': reference_file,
+            'subtitles_path': sub_file}
+            try:
+                requests.request("POST", url, data = payload, timeout=1)
+            except requests.exceptions.ReadTimeout: 
+                pass
+        else:
+            url = "http://192.168.3.13:6767/api/blacklist_episode_subtitles_add"
+            payload = {'apikey': apikey,
+            'sonarr_series_id': series_id,
+            'sonarr_episode_id': episode_id,
+            'provider': provider,
+            'subs_id': subtitle_id,
+            'language': sub_code2,
+            'forced': 'false',
+            'video_path': reference_file,
+            'subtitles_path': sub_file}
+            try:
+                requests.request("POST", url, data = payload, timeout=1)
+            except requests.exceptions.ReadTimeout: 
+                pass       
+
+        if os.path.isfile(sub_file):
+            os.remove(sub_file)
         log.warning('Sync failed - wrong subs')
         print('Sync failed - wrong subs')
 except:

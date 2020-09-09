@@ -2,6 +2,7 @@
 # DEBUG, INFO, WARNING, ERROR
 LoggingLevel = DEBUG
 Logfile = /opt/SubSyncStarter/SubSyncStarter.log
+BazarrApiKey = 123
 
 [SubSync]
 Location = /snap/bin/subsync
