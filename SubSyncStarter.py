@@ -63,7 +63,7 @@ try:
         log.info('Sync succesful')
         print('Sync succesful')
     else:
-        if series_id = "":
+        if series_id == "":
             url = "http://192.168.3.13:6767/api/blacklist_movie_subtitles_add"
             payload = {'apikey': apikey,
             'radarr_id': episode_id,
