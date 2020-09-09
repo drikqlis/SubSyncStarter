@@ -59,7 +59,7 @@ try:
         log.debug('Output: %s' % outputs)
     log.debug('Error: %s' % err)
     log.debug('Exit code: %s' % p_status)
-    if "[+] done" in output_list[-1]:
+    if any("[+] done" in s for s in output_list):
         log.info('Sync succesful')
         print('Sync succesful')
     else:
