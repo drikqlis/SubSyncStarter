@@ -9,6 +9,11 @@ reference_file = sys.argv[1]
 sub_file = sys.argv[2]
 sub_code2 = sys.argv[3]
 sub_code3 = sys.argv[4]
+audio_code3 = sys.argv[5]
+subtitle_id = sys.argv[6]
+provider = sys.argv[7]
+series_id = sys.argv[8]
+episode_id = sys.argv[9]
 bad_file = os.path.splitext(reference_file)[0] + '.bad'
 subsyncstarter_path = os.path.dirname(sys.argv[0])
 
@@ -23,7 +28,7 @@ effort = config['SubSync']['Effort']
 window_size = config['SubSync']['WindowSize']
 max_point_dist = config['SubSync']['MaxPointDistance']
 
-command = location_subsync + ' --cli --verbose ' + loglevel_subsync + ' --logfile ' + '"' + logfile_subsync + '"' + ' --window-size ' + window_size + ' --max-point-dist ' + max_point_dist + ' sync --sub ' + '"' + sub_file + '"' + ' --ref ' + '"' + reference_file + '"' + ' --out ' + '"' + sub_file + '"' + ' --effort ' + effort + ' --overwrite'
+command = location_subsync + ' --cli --verbose ' + loglevel_subsync + ' --logfile ' + '"' + logfile_subsync + '"' + ' --window-size ' + window_size + ' --max-point-dist ' + max_point_dist + ' sync --sub ' + '"' + sub_file + '"' + ' --ref ' + '"' + reference_file + '"' + ' --ref-lang ' + audio_code3 + ' --out ' + '"' + sub_file + '"' + ' --effort ' + effort + ' --overwrite'
 
 logging.root.handlers = []
 logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.DEBUG, handlers=[logging.FileHandler(logfile_starter, encoding="utf-8"),logging.StreamHandler()])
@@ -33,6 +38,12 @@ log.debug('Reference file: %s' % reference_file)
 log.debug('Subtitles file: %s' % sub_file)
 log.debug('Subtitles code (2): %s' % sub_code2)
 log.debug('Subtitles code (3): %s' % sub_code3)
+log.debug('Audio code (3): %s' % audio_code3)
+log.debug('Subtitles id: %s' % subtitle_id)
+log.debug('Provider: %s' % provider)
+log.debug('Series id: %s' % series_id)
+log.debug('Episode id: %s' % episode_id)
+
 
 log.info('Starting synchronization of subtitles file: %s' % sub_file)
 log.debug('Running command: %s' % command)
