@@ -60,8 +60,8 @@ try:
     log.debug('Error: %s' % err)
     log.debug('Exit code: %s' % p_status)
     if any("[+] done" in s for s in output_list):
-        log.info('Sync succesful')
-        print('Sync succesful')
+        log.info('Sync succesful. Lang:' + sub_code2 + ' Provider: ' + provider + ' Sub id: ' + subtitle_id)
+        print('Sync succesful. Lang:' + sub_code2 + ' Provider: ' + provider + ' Sub id: ' + subtitle_id)
     else:
         if series_id == "":
             url = "http://192.168.3.13:6767/api/blacklist_movie_subtitles_add"
@@ -95,8 +95,8 @@ try:
 
         #if os.path.isfile(sub_file):
         #    os.remove(sub_file)
-        log.warning('Sync failed - wrong subs')
-        print('Sync failed - wrong subs')
+        log.warning('Sync failed - wrong subs. Lang:' + sub_code2 + ' Provider: ' + provider + ' Sub id: ' + subtitle_id)
+        print('Sync failed - wrong subs. Lang:' + sub_code2 + ' Provider: ' + provider + ' Sub id: ' + subtitle_id)
 except:
     os.remove(sub_file)
     log.exception('Sync failed - exception')
