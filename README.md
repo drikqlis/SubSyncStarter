@@ -24,6 +24,7 @@ Create config.ini file based on config.ini.sample:
   - LoggingLevel - Logging level of the script, can be DEBUG, INFO, WARNING, ERROR.
   - Logfile - Where to save log file of the script. Default if installed to /opt/SubSyncStarter
   - BazarrApiKey - API key for Bazarr for blacklisting wrong subtitles.
+  - BazarrUrl - URL to your Bazarr instance with protocol and port and without slash at the end (e.g. http://192.168.1.10:6767).
 ## SubSync
   - Location - Where SubSync is installed. Default should work.
   - LoggingLevel - Logging level of SubSync.

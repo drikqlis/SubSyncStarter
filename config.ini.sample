@@ -3,6 +3,7 @@
 LoggingLevel = DEBUG
 Logfile = /opt/SubSyncStarter/SubSyncStarter.log
 BazarrApiKey = 123
+BazarrUrl = http://192.168.1.10:6767
 
 [SubSync]
 Location = /snap/bin/subsync

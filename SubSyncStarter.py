@@ -21,6 +21,7 @@ config.read(os.path.join(subsyncstarter_path,'config.ini'))
 loglevel_starter = config['General']['LoggingLevel']
 logfile_starter = config['General']['Logfile']
 apikey = config['General']['BazarrApiKey']
+bazarr_url = config['General']['BazarrUrl']
 location_subsync = config['SubSync']['Location']
 loglevel_subsync = config['SubSync']['LoggingLevel']
 logfile_subsync = config['SubSync']['Logfile']
@@ -64,7 +65,7 @@ try:
         print('Sync succesful. Lang: ' + sub_code2 + ', Provider: ' + provider + ', Sub id: ' + subtitle_id)
     else:
         if series_id == "":
-            url = "http://192.168.3.13:6767/api/blacklist_movie_subtitles_add"
+            url = bazarr_url + "/api/blacklist_movie_subtitles_add"
             payload = {'apikey': apikey,
             'radarr_id': episode_id,
             'provider': provider,
@@ -78,7 +79,7 @@ try:
             except requests.exceptions.ReadTimeout: 
                 pass
         else:
-            url = "http://192.168.3.13:6767/api/blacklist_episode_subtitles_add"
+            url = bazarr_url + "/api/blacklist_episode_subtitles_add"
             payload = {'apikey': apikey,
             'sonarr_series_id': series_id,
             'sonarr_episode_id': episode_id,
