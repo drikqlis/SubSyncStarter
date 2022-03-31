@@ -65,34 +65,31 @@ try:
         print('Sync succesful. Lang: ' + sub_code2 + ', Provider: ' + provider + ', Sub id: ' + subtitle_id)
     else:
         if series_id == "":
-            url = bazarr_url + "/api/blacklist_movie_subtitles_add"
-            payload = {'apikey': apikey,
-            'radarr_id': episode_id,
-            'provider': provider,
-            'subs_id': subtitle_id,
-            'language': sub_code2,
-            'forced': 'false',
-            'video_path': reference_file,
-            'subtitles_path': sub_file}
-            try:
-                requests.request("POST", url, data = payload, timeout=1)
-            except requests.exceptions.ReadTimeout: 
-                pass
+            url = bazarr_url + f'/api/movies/blacklist?radarrid={episode_id}'
+            headers = {
+                'X-API-KEY': apikey
+            }
+            payload = {
+                'provider': provider,
+                'subs_id': subtitle_id,
+                'language': sub_code2,
+                'subtitles_path': sub_file
+            }
         else:
-            url = bazarr_url + "/api/blacklist_episode_subtitles_add"
-            payload = {'apikey': apikey,
-            'sonarr_series_id': series_id,
-            'sonarr_episode_id': episode_id,
-            'provider': provider,
-            'subs_id': subtitle_id,
-            'language': sub_code2,
-            'forced': 'false',
-            'video_path': reference_file,
-            'subtitles_path': sub_file}
-            try:
-                requests.request("POST", url, data = payload, timeout=1)
-            except requests.exceptions.ReadTimeout: 
-                pass       
+            url = bazarr_url + f'/api/episodes/blacklist?seriesid={series_id}&episodeid={episode_id}'
+            headers = {
+                'X-API-KEY': apikey
+            }
+            payload = {
+                'provider': provider,
+                'subs_id': subtitle_id,
+                'language': sub_code2,
+                'subtitles_path': sub_file
+            }
+        try:
+            requests.request('POST', url, data=payload, headers=headers, timeout=10)
+        except requests.exceptions.ReadTimeout:
+            pass
 
         #if os.path.isfile(sub_file):
         #    os.remove(sub_file)
