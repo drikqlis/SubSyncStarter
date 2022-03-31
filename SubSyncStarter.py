@@ -32,7 +32,7 @@ max_point_dist = config['SubSync']['MaxPointDistance']
 command = location_subsync + ' --cli --verbose ' + loglevel_subsync + ' --logfile ' + '"' + logfile_subsync + '"' + ' --window-size ' + window_size + ' --max-point-dist ' + max_point_dist + ' sync --sub ' + '"' + sub_file + '"' + ' --ref ' + '"' + reference_file + '"' + ' --ref-lang ' + audio_code3 + ' --out ' + '"' + sub_file + '"' + ' --effort ' + effort + ' --overwrite'
 
 logging.root.handlers = []
-logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.DEBUG, handlers=[logging.FileHandler(logfile_starter, encoding="utf-8"),logging.StreamHandler()])
+logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=loglevel_starter, handlers=[logging.FileHandler(logfile_starter, encoding="utf-8")])
 log = logging.getLogger()
 
 log.debug('Reference file: %s' % reference_file)
