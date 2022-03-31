@@ -46,7 +46,7 @@ log.debug('Series id: %s' % series_id)
 log.debug('Episode id: %s' % episode_id)
 
 
-log.info('Starting synchronization of subtitles file: %s' % sub_file)
+log.debug('Starting synchronization of subtitles file: %s' % sub_file)
 log.debug('Running command: %s' % command)
 
 try:
