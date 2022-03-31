@@ -29,7 +29,7 @@ effort = config['SubSync']['Effort']
 window_size = config['SubSync']['WindowSize']
 max_point_dist = config['SubSync']['MaxPointDistance']
 
-command = location_subsync + ' --cli --verbose ' + loglevel_subsync + ' --logfile ' + '"' + logfile_subsync + '"' + ' --window-size ' + window_size + ' --max-point-dist ' + max_point_dist + ' sync --sub ' + '"' + sub_file + '"' + ' --ref ' + '"' + reference_file + '"' + ' --ref-lang ' + audio_code3 + ' --out ' + '"' + sub_file + '"' + ' --effort ' + effort + ' --overwrite'
+command = location_subsync + ' --cli --verbose ' + loglevel_subsync + ' --logfile ' + '"' + logfile_subsync + '"' + ' --window-size ' + window_size + ' --max-point-dist ' + max_point_dist + ' sync --sub ' + '"' + sub_file + '"' + ' --ref ' + '"' + reference_file + '"' + ' --ref-lang ' + audio_code3 + ' --sub-lang ' + sub_code3 + ' --ref-stream-by-lang ' + audio_code3 + ' --out ' + '"' + sub_file + '"' + ' --effort ' + effort + ' --overwrite'
 
 logging.root.handlers = []
 logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=loglevel_starter, handlers=[logging.FileHandler(logfile_starter, encoding="utf-8")])
